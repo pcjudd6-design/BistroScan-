@@ -1,0 +1,7 @@
+{
+  "name": "BistroScan - Restaurant Invoice Intelligence",
+  "description": "Scan and track restaurant invoices, analyze spending patterns, and monitor profitability with AI-powered data extraction.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
