@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Printer, Download, CheckCircle2, Clock } from 'lucide-react';
+import { X, Printer, Download, CheckCircle2, Clock, FileText } from 'lucide-react';
 import { Invoice } from '../types';
 import { format } from 'date-fns';
 
@@ -30,10 +30,7 @@ export default function InvoiceDetail({ invoice, onClose, onStatusChange }: Invo
             <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-colors">
               <Download className="w-5 h-5" />
             </button>
-            <button 
-              onClick={onClose}
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-colors"
-            >
+            <button onClick={onClose} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-colors">
               <X className="w-6 h-6" />
             </button>
           </div>
@@ -59,16 +56,13 @@ export default function InvoiceDetail({ invoice, onClose, onStatusChange }: Invo
 
               <div className="bg-gray-50 rounded-2xl p-6 space-y-3">
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>Subtotal</span>
-                  <span>${invoice.subtotal.toFixed(2)}</span>
+                  <span>Subtotal</span><span>${invoice.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>Tax</span>
-                  <span>${invoice.tax.toFixed(2)}</span>
+                  <span>Tax</span><span>${invoice.tax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-lg font-bold text-gray-900 pt-3 border-t border-black/5">
-                  <span>Total Amount</span>
-                  <span>${invoice.totalAmount.toFixed(2)}</span>
+                  <span>Total Amount</span><span>${invoice.totalAmount.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -77,11 +71,9 @@ export default function InvoiceDetail({ invoice, onClose, onStatusChange }: Invo
                   <Clock className="w-5 h-5 text-emerald-600" />
                   <span className="text-sm font-medium text-emerald-900">Payment Status</span>
                 </div>
-                <select 
-                  value={invoice.status}
+                <select value={invoice.status}
                   onChange={(e) => onStatusChange(invoice.id, e.target.value as any)}
-                  className="bg-white border border-emerald-200 text-sm font-semibold text-emerald-900 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                >
+                  className="bg-white border border-emerald-200 text-sm font-semibold text-emerald-900 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                   <option value="Pending">Pending</option>
                   <option value="Paid">Paid</option>
                 </select>
@@ -92,12 +84,8 @@ export default function InvoiceDetail({ invoice, onClose, onStatusChange }: Invo
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Original Document</h3>
               <div className="aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden border border-black/5 shadow-inner flex items-center justify-center">
                 {invoice.imageUrl ? (
-                  <img 
-                    src={invoice.imageUrl} 
-                    alt="Invoice Document" 
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
-                  />
+                  <img src={invoice.imageUrl} alt="Invoice Document"
+                    className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                 ) : (
                   <div className="flex flex-col items-center text-gray-400">
                     <FileText className="w-12 h-12 mb-2" />
@@ -112,5 +100,3 @@ export default function InvoiceDetail({ invoice, onClose, onStatusChange }: Invo
     </div>
   );
 }
-
-import { FileText } from 'lucide-react';
